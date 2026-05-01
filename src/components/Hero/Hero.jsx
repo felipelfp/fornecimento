@@ -41,18 +41,21 @@ const Hero = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    e.stopPropagation();
     setSending(true);
     setError('');
     try {
+      const data = new FormData();
+      data.append('Nome', formData.nome);
+      data.append('Empresa', formData.empresa);
+      data.append('WhatsApp', formData.whatsapp);
+      data.append('_subject', 'Nova solicitação de consultoria - Fornecimento Digital');
+      data.append('_captcha', 'false');
+      data.append('_template', 'table');
+
       const res = await fetch(`https://formsubmit.co/ajax/${FORMSUBMIT_EMAIL}`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({
-          _subject: 'Nova solicitação de consultoria - Fornecimento Digital',
-          Nome: formData.nome,
-          Empresa: formData.empresa,
-          WhatsApp: formData.whatsapp,
-        }),
+        body: data,
       });
       if (res.ok) {
         setSubmitted(true);
@@ -129,12 +132,11 @@ const Hero = () => {
 
             <AnimatePresence mode="wait">
               {!submitted ? (
-                <motion.form
+                <form
                   key="form"
                   className="luxury-inputs"
                   onSubmit={handleSubmit}
-                  initial={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
+                  action="javascript:void(0)"
                 >
                   <div className="input-box">
                     <input
@@ -177,7 +179,7 @@ const Hero = () => {
                     {sending ? 'ENVIANDO...' : 'INICIAR CONSULTORIA'}
                     <div className="btn-flare"></div>
                   </button>
-                </motion.form>
+                </form>
               ) : (
                 <motion.div
                   key="success"
