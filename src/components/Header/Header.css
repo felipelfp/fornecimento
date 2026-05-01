@@ -1,0 +1,118 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0.8rem 0;
+  z-index: 1000;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  justify-content: center;
+  background: transparent;
+}
+
+.header.scrolled {
+  background: rgba(5, 5, 5, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1300px;
+  padding: 0 2rem;
+}
+
+.logo-main {
+  height: 48px;
+  width: auto;
+  transition: height 0.5s ease;
+}
+
+.header.scrolled .logo-main {
+  height: 40px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+.nav-links a {
+  font-family: var(--font-secondary);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  color: rgba(255, 255, 255, 0.6);
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--color-luxury-gold);
+}
+
+.cta-header-gold {
+  background: var(--color-luxury-gold);
+  color: var(--color-black) !important;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  font-weight: 800 !important;
+  font-size: 0.7rem !important;
+  box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
+  white-space: nowrap;
+}
+
+.cta-header-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px rgba(212, 175, 55, 0.3);
+}
+
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.mobile-menu {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  width: 100%;
+  background: var(--color-navy);
+  z-index: 999;
+  padding: 2rem;
+  border-bottom: 1px solid var(--color-luxury-gold);
+}
+
+.mobile-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.mobile-links a {
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.mobile-cta {
+  color: var(--color-luxury-gold);
+}
+
+@media (max-width: 968px) {
+  .desktop-nav {
+    display: none;
+  }
+  
+  .mobile-toggle {
+    display: block;
+  }
+}

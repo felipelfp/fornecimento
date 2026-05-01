@@ -1,0 +1,112 @@
+:root {
+  --color-black: #050505;
+  --color-dark-gray: #111111;
+  --color-navy: #0A1118;
+  --color-luxury-gold: #D4AF37;
+  --color-platinum: #E5E4E2;
+  --color-white: #FFFFFF;
+  --color-whatsapp: #25D366;
+  
+  --font-primary: 'Outfit', sans-serif;
+  --font-secondary: 'Inter', sans-serif;
+  
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  --glass-blur: blur(12px);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--color-black);
+  color: var(--color-white);
+  line-height: 1.5;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.luxury-text-gradient {
+  background: linear-gradient(135deg, #D4AF37 0%, #F9E29C 50%, #D4AF37 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: 20px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-black);
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-luxury-gold);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+
+ul {
+  list-style: none;
+}
+
+section {
+  position: relative;
+  overflow: hidden;
+  scroll-margin-top: 80px;
+  min-height: 105vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 6rem 0;
+}
+
+@media (max-width: 1024px) {
+  section { 
+    padding: 4rem 0 !important; 
+    min-height: 100vh !important;
+  }
+}
+
+@media (max-width: 768px) {
+  section { 
+    padding: 3rem 0 !important; 
+    min-height: 100vh !important;
+  }
+  .luxury-text-gradient { font-size: 2.2rem !important; }
+  .glass-card { padding: 1.5rem !important; margin: 0 10px; }
+}

@@ -1,0 +1,96 @@
+.objectives-luxury-grid {
+  background-color: var(--color-black);
+}
+
+.grid-objectives {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.objectives-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+}
+
+.objective-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.obj-item-premium {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  padding: 1.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.obj-icon {
+  color: var(--color-luxury-gold);
+}
+
+.dashboard-glass-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 30px;
+  padding: 3rem;
+  margin-bottom: 2rem;
+  backdrop-filter: blur(20px);
+}
+
+.card-header-premium h3 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.text-glow-blue {
+  color: #3b82f6;
+  text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+}
+
+.dashboard-visual-placeholder {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.data-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.data-row span {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.data-bar {
+  height: 4px;
+  background: var(--color-luxury-gold);
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+.btn-full-width {
+  width: 100%;
+}
+
+@media (max-width: 968px) {
+  .grid-objectives {
+    grid-template-columns: 1fr;
+    gap: 5rem;
+  }
+}

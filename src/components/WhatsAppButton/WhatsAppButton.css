@@ -1,0 +1,306 @@
+/* ─── Trigger Button ─── */
+.whatsapp-concierge {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 9999;
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.concierge-content {
+  background: var(--color-navy);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  padding: 0.75rem 1.5rem 0.75rem 0.75rem;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+}
+
+.concierge-icon {
+  width: 45px;
+  height: 45px;
+  background: var(--color-luxury-gold);
+  color: var(--color-black);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+}
+
+.concierge-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.c-tag {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--color-luxury-gold);
+}
+
+.c-status {
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: var(--color-whatsapp);
+  letter-spacing: 1px;
+}
+
+/* ─── Chat Panel ─── */
+.vip-chat-panel {
+  position: fixed;
+  bottom: 6.5rem;
+  right: 2rem;
+  z-index: 9998;
+  width: 360px;
+  max-width: calc(100vw - 2rem);
+  background: #0f0f0f;
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+  font-family: var(--font-secondary, 'Inter', sans-serif);
+}
+
+.vip-chat-header {
+  background: linear-gradient(135deg, #1a1a1a 0%, #111 100%);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.vip-chat-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.vip-chat-avatar {
+  width: 40px;
+  height: 40px;
+  background: var(--color-luxury-gold, #D4AF37);
+  color: #000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.vip-chat-name {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--color-luxury-gold, #D4AF37);
+  margin: 0;
+}
+
+.vip-chat-online {
+  font-size: 0.65rem;
+  color: #25D366;
+  margin: 0.1rem 0 0;
+  font-weight: 600;
+}
+
+.vip-chat-close {
+  background: rgba(255,255,255,0.05);
+  border: none;
+  color: rgba(255,255,255,0.5);
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+.vip-chat-close:hover {
+  background: rgba(255,255,255,0.1);
+  color: white;
+}
+
+.vip-chat-body {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.vip-chat-progress {
+  display: flex;
+  gap: 0.4rem;
+  justify-content: center;
+}
+
+.vip-dot {
+  width: 28px;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(255,255,255,0.1);
+  transition: background 0.4s ease;
+}
+
+.vip-dot.active {
+  background: var(--color-luxury-gold, #D4AF37);
+}
+
+.vip-chat-bubble {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 4px 16px 16px 16px;
+  padding: 0.85rem 1rem;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.5;
+}
+
+.vip-chat-bubble p {
+  margin: 0 0 0.4rem 0;
+}
+.vip-chat-bubble p:last-child {
+  margin: 0;
+}
+
+.vip-chat-input-area {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.vip-chat-input {
+  flex: 1;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  color: white;
+  font-size: 0.9rem;
+  font-family: inherit;
+  resize: none;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+.vip-chat-input::placeholder { color: rgba(255,255,255,0.3); }
+.vip-chat-input:focus { border-color: rgba(212,175,55,0.5); }
+
+.vip-chat-send {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--color-luxury-gold, #D4AF37);
+  color: #000;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+.vip-chat-send:hover:not(:disabled) { transform: scale(1.1); }
+.vip-chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.vip-chat-hint {
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.25);
+  text-align: center;
+  margin: 0;
+}
+
+/* ─── Success State ─── */
+.vip-chat-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: center;
+  padding: 1rem 0.5rem;
+}
+
+.vip-success-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #25D366;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vip-success-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: white;
+  margin: 0;
+}
+
+.vip-success-msg {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.vip-success-close {
+  margin-top: 0.25rem;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: white;
+  border-radius: 8px;
+  padding: 0.5rem 1.5rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.vip-success-close:hover { background: rgba(255,255,255,0.12); }
+
+.vip-success-submsg {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.4);
+  margin: 0;
+}
+
+.vip-success-whatsapp {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: #25D366;
+  color: white;
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+}
+.vip-success-whatsapp:hover {
+  background: #20bd5a;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(37, 211, 102, 0.45);
+}
+
+/* ─── Mobile ─── */
+@media (max-width: 600px) {
+  .concierge-text { display: none; }
+  .concierge-content { padding: 0.5rem; }
+  .vip-chat-panel {
+    bottom: 5.5rem;
+    right: 0.75rem;
+    width: calc(100vw - 1.5rem);
+  }
+}

@@ -1,0 +1,63 @@
+.results-proven-luxury {
+  background-color: var(--color-black);
+}
+
+.results-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.results-header h2 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.text-glow-red {
+  color: #ef4444;
+  text-shadow: 0 0 20px rgba(239, 68, 68, 0.4);
+}
+
+.results-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+}
+
+.stat-box-gold-border {
+  border: 1px solid var(--color-luxury-gold);
+  padding: 2.2rem 1.5rem;
+  text-align: center;
+  border-radius: 4px; /* Minimalist sharp luxury */
+  background: rgba(212, 175, 55, 0.02);
+  transition: all 0.4s ease;
+}
+
+.stat-box-gold-border:hover {
+  background: rgba(212, 175, 55, 0.05);
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.1);
+  transform: scale(1.02);
+}
+
+.stat-number-premium {
+  display: block;
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--color-luxury-gold);
+  margin-bottom: 1.5rem;
+  font-family: var(--font-primary);
+}
+
+.stat-label-premium {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.6;
+}
+
+@media (max-width: 968px) {
+  .results-stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
