@@ -1,26 +1,29 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Check } from 'lucide-react';
 import './Hero.css';
 import luxuryBg from '../../assets/luxury-bg.png';
 
+const FORMSUBMIT_EMAIL = 'felipe008lucas@gmail.com';
+
 const Hero = () => {
+  const [formData, setFormData]   = useState({ nome: '', empresa: '', whatsapp: '' });
+  const [sending, setSending]     = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError]         = useState('');
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { 
       opacity: 1,
-      transition: { 
-        staggerChildren: 0.15,
-        delayChildren: 0.3
-      }
+      transition: { staggerChildren: 0.15, delayChildren: 0.3 }
     }
   };
 
   const itemVariants = {
     hidden: { y: 40, opacity: 0 },
     visible: { 
-      y: 0, 
-      opacity: 1,
+      y: 0, opacity: 1,
       transition: { duration: 1, ease: [0.16, 1, 0.3, 1] }
     }
   };
@@ -32,10 +35,41 @@ const Hero = () => {
     "Criação de Ativos Digitais"
   ];
 
+  const handleChange = (e) => {
+    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSending(true);
+    setError('');
+    try {
+      const res = await fetch(`https://formsubmit.co/ajax/${FORMSUBMIT_EMAIL}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          _subject: 'Nova solicitação de consultoria - Fornecimento Digital',
+          Nome: formData.nome,
+          Empresa: formData.empresa,
+          WhatsApp: formData.whatsapp,
+        }),
+      });
+      if (res.ok) {
+        setSubmitted(true);
+      } else {
+        setError('Erro ao enviar. Tente novamente.');
+      }
+    } catch {
+      setError('Erro ao enviar. Verifique sua conexão.');
+    } finally {
+      setSending(false);
+    }
+  };
+
   return (
     <section className="hero-premium" id="inicio">
       <div className="hero-bg-overlay">
-        <img src={luxuryBg} alt="" className="bg-image" />
+        <img src={luxuryBg} alt="" className="bg-image" loading="eager" />
         <div className="vignette"></div>
       </div>
       
@@ -92,34 +126,74 @@ const Hero = () => {
               <h2>SOLICITAR ACESSO</h2>
               <p>Aplique para uma análise estratégica gratuita.</p>
             </div>
-            
-            <form
-              className="luxury-inputs"
-              action="https://formsubmit.co/felipe008lucas@gmail.com"
-              method="POST"
-            >
-              <input type="hidden" name="_subject" value="Nova solicitação de consultoria - Fornecimento Digital" />
-              <input type="hidden" name="_captcha" value="false" />
-              <input type="hidden" name="_template" value="table" />
 
-              <div className="input-box">
-                <input type="text" name="nome" required />
-                <label>Nome Completo</label>
-              </div>
-              <div className="input-box">
-                <input type="text" name="empresa" required />
-                <label>Empresa</label>
-              </div>
-              <div className="input-box">
-                <input type="tel" name="whatsapp" required />
-                <label>WhatsApp</label>
-              </div>
+            <AnimatePresence mode="wait">
+              {!submitted ? (
+                <motion.form
+                  key="form"
+                  className="luxury-inputs"
+                  onSubmit={handleSubmit}
+                  initial={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                >
+                  <div className="input-box">
+                    <input
+                      type="text"
+                      name="nome"
+                      value={formData.nome}
+                      onChange={handleChange}
+                      required
+                    />
+                    <label>Nome Completo</label>
+                  </div>
+                  <div className="input-box">
+                    <input
+                      type="text"
+                      name="empresa"
+                      value={formData.empresa}
+                      onChange={handleChange}
+                      required
+                    />
+                    <label>Empresa</label>
+                  </div>
+                  <div className="input-box">
+                    <input
+                      type="tel"
+                      name="whatsapp"
+                      value={formData.whatsapp}
+                      onChange={handleChange}
+                      required
+                    />
+                    <label>WhatsApp</label>
+                  </div>
 
-              <button type="submit" className="btn-luxury">
-                INICIAR CONSULTORIA
-                <div className="btn-flare"></div>
-              </button>
-            </form>
+                  {error && <p className="hero-form-error">{error}</p>}
+
+                  <button
+                    type="submit"
+                    className="btn-luxury"
+                    disabled={sending}
+                  >
+                    {sending ? 'ENVIANDO...' : 'INICIAR CONSULTORIA'}
+                    <div className="btn-flare"></div>
+                  </button>
+                </motion.form>
+              ) : (
+                <motion.div
+                  key="success"
+                  className="hero-form-success"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.4 }}
+                >
+                  <div className="hero-success-icon">✓</div>
+                  <p className="hero-success-title">Solicitação recebida!</p>
+                  <p className="hero-success-msg">
+                    Nossa equipe entrará em contato com você em breve via WhatsApp.
+                  </p>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </motion.div>
       </div>
@@ -128,3 +202,5 @@ const Hero = () => {
 };
 
 export default Hero;
+
+

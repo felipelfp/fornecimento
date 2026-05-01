@@ -46,7 +46,16 @@ const Partners = () => {
               viewport={{ once: true }}
               transition={{ delay: index * 0.05 }}
             >
-              <img src={partner.logo} alt={partner.name} className="partner-logo-img" title={partner.name} />
+              <img
+                src={partner.logo}
+                alt={partner.name}
+                className="partner-logo-img"
+                title={partner.name}
+                loading="lazy"
+                decoding="async"
+                width="130"
+                height="130"
+              />
             </motion.div>
           ))}
         </div>
