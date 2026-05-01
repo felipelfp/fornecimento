@@ -39,9 +39,8 @@ const Hero = () => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    e.stopPropagation();
+  const handleSubmit = async () => {
+    if (!formData.nome || !formData.empresa || !formData.whatsapp) return;
     setSending(true);
     setError('');
     try {
@@ -132,12 +131,7 @@ const Hero = () => {
 
             <AnimatePresence mode="wait">
               {!submitted ? (
-                <form
-                  key="form"
-                  className="luxury-inputs"
-                  onSubmit={handleSubmit}
-                  action="javascript:void(0)"
-                >
+                <div className="luxury-inputs">
                   <div className="input-box">
                     <input
                       type="text"
@@ -172,14 +166,15 @@ const Hero = () => {
                   {error && <p className="hero-form-error">{error}</p>}
 
                   <button
-                    type="submit"
+                    type="button"
                     className="btn-luxury"
-                    disabled={sending}
+                    disabled={sending || !formData.nome || !formData.empresa || !formData.whatsapp}
+                    onClick={handleSubmit}
                   >
                     {sending ? 'ENVIANDO...' : 'INICIAR CONSULTORIA'}
                     <div className="btn-flare"></div>
                   </button>
-                </form>
+                </div>
               ) : (
                 <motion.div
                   key="success"

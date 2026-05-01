@@ -254,16 +254,11 @@
 }
 
 /* Botão desabilitado enquanto formulário não estiver preenchido */
-form.luxury-inputs:invalid .btn-luxury {
+.btn-luxury:disabled {
   opacity: 0.45;
   cursor: not-allowed;
   transform: none !important;
   box-shadow: none !important;
-}
-
-form.luxury-inputs:invalid .btn-luxury:hover {
-  transform: none;
-  box-shadow: none;
 }
 
 .btn-flare {
